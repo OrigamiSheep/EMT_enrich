@@ -181,7 +181,7 @@ EMT.plot <- function(irea.res.df, color.breaks = c(-0.2,0,0.2)) {
 }
 
 drug.plot <- function(irea.res.df, color.breaks = c(-0.2,0,0.2)) {
-  data.plot <- irea.res.df %>% arrange(p.value) %>% mutate(drug = factor(drug, levels=drug))
+  data.plot <- irea.res.df %>% arrange(p.value) %>% mutate(drug = factor(drug, levels=drug)) %>% na.omit()
   abs.values <- color.breaks
   rel.values <- sapply(abs.values, function(xx) sum(data.plot$es < xx) / nrow(data.plot) )
   max.y <- max(-log10(data.plot$p.value))
