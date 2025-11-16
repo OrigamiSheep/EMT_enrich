@@ -48,7 +48,7 @@ EMT <- function(input.mat, ref.db, expression.cutoff=0.25) {
 
 EMT_drug <- function(input.mat, ref.db, factor, expression.cutoff=0.25) {
   message(glue::glue("Loading {ref.db} ..."))
-  seu <- qs::qread("../../EMT_ref/merge/A549_EMT_Kinase.qs")
+  seu <- qs::qread(ref.db)
   EMT_factor <- unique(seu$Drug)
   input.mat <- as.matrix(input.mat)
   normalized.matrix <- as.matrix(seu[["RNA"]]@data) # [note] Seurat V5 conflict
